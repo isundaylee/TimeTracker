@@ -8,6 +8,7 @@
 @synthesize isHighlighted = _isHighlighted;
 @synthesize action = _action;
 @synthesize target = _target;
+@synthesize text = _text;
 
 #pragma mark -
 
@@ -21,8 +22,18 @@
     if (self != nil) {
         _statusItem = statusItem;
         _statusItem.view = self;
+        _text = @"Idle";
     }
     return self;
+}
+
+- (NSString *)text {
+    return _text;
+}
+
+- (void)setText:(NSString *)text {
+    _text = text;
+    [self setNeedsDisplay:YES];
 }
 
 
@@ -49,9 +60,29 @@
     NSRect bounds = self.bounds;
     CGFloat iconX = roundf((NSWidth(bounds) - iconSize.width) / 2);
     CGFloat iconY = roundf((NSHeight(bounds) - iconSize.height) / 2);
-    NSPoint iconPoint = NSMakePoint(iconX, iconY);
+    CGFloat horizontalPadding = 10.0f;
+    CGFloat textSize = 14.0f;
+    CGFloat textPadding = 3.0f;
 
-	[icon drawAtPoint:iconPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+//	[icon drawAtPoint:iconPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    
+    NSString *text = self.text;
+    NSMutableDictionary *stringAttrs = [[NSMutableDictionary alloc] init];
+    
+    if (self.isHighlighted) {
+        [stringAttrs setValue:[NSColor whiteColor] forKey:NSForegroundColorAttributeName];
+    } else {
+        [stringAttrs setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
+    }
+    
+    [stringAttrs setValue:[NSFont fontWithName:@"HelveticaNeue" size:textSize] forKey:NSFontAttributeName];
+    
+    NSSize size = [text sizeWithAttributes:stringAttrs];
+    
+    [text drawAtPoint:CGPointMake(horizontalPadding, textPadding) withAttributes:stringAttrs];
+//    [text drawInRect:NSMakeRect(0, 0, 100, 30) withAttributes:stringAttrs];
+    
+    _statusItem.length = 2 * horizontalPadding + size.width;
 }
 
 #pragma mark -

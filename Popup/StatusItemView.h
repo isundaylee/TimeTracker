@@ -17,5 +17,6 @@
 @property (nonatomic, readonly) NSRect globalRect;
 @property (nonatomic) SEL action;
 @property (nonatomic, unsafe_unretained) id target;
+@property (nonatomic, strong) NSString *text; 
 
 @end

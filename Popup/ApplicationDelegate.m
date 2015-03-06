@@ -41,6 +41,12 @@ void *kContextActivePanel = &kContextActivePanel;
     return NSTerminateNow;
 }
 
+#pragma mark Global utilities
+
+- (void)setStatusItemText:(NSString *)text {
+    self.menubarController.statusItemView.text = text;
+}
+
 #pragma mark - Actions
 
 - (IBAction)togglePanel:(id)sender

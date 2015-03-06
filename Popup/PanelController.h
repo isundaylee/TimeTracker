@@ -5,6 +5,9 @@
 
 @protocol PanelControllerDelegate <NSObject>
 
+- (IBAction)togglePanel:(id)sender;
+- (void)setStatusItemText:(NSString *)text;
+
 @optional
 
 - (StatusItemView *)statusItemViewForPanelController:(PanelController *)controller;

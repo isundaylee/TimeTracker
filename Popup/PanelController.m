@@ -2,6 +2,7 @@
 #import "BackgroundView.h"
 #import "StatusItemView.h"
 #import "MenubarController.h"
+#import "CalendarStore/CalendarStore.h"
 
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
@@ -14,21 +15,111 @@
 
 #pragma mark -
 
+@interface PanelController () {
+}
+
+@property (nonatomic, strong) NSArray *workTypes;
+@property (nonatomic, strong) NSMutableArray *workButtons;
+@property (nonatomic, strong) NSButton *stopButton;
+@property (nonatomic) CGFloat panelHeight;
+@property (nonatomic) BOOL isCounting;
+@property (nonatomic, strong) NSDate *startTime;
+@property (nonatomic, strong) NSString *currentWorkType;
+@property (nonatomic) CGFloat trackingPanelHeight;
+@property (nonatomic) CGFloat nonTrackingPanelHeight;
+
+@end
+
 @implementation PanelController
 
 @synthesize backgroundView = _backgroundView;
 @synthesize delegate = _delegate;
 @synthesize searchField = _searchField;
 @synthesize textField = _textField;
+@synthesize workTypes = _workTypes;
+@synthesize workButtons = _workButtons;
+@synthesize panelHeight = _panelHeight;
+@synthesize isCounting = _isCounting;
+@synthesize startTime = _startTime;
+@synthesize currentWorkType = _currentWorkType;
+@synthesize stopButton = _stopButton;
+@synthesize trackingPanelHeight = _trackingPanelHeight;
+@synthesize nonTrackingPanelHeight = _nonTrackingPanelHeight;
 
 #pragma mark -
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate
 {
+    NSLog(@"initWithDelegate called");
     self = [super initWithWindowNibName:@"Panel"];
     if (self != nil)
     {
         _delegate = delegate;
+
+        _isCounting = NO;
+        
+        _workTypes = [NSArray arrayWithObjects:
+                      [NSString stringWithFormat:@"UROP"],
+                      [NSString stringWithFormat:@"6.01 SLA"],
+                      [NSString stringWithFormat:@"The Tech"],
+                      nil];
+        
+        _workButtons = [[NSMutableArray alloc] init];
+
+        NSPanel *panel = (id)[self window];
+        [panel setAcceptsMouseMovedEvents:YES];
+        [panel setLevel:NSPopUpMenuWindowLevel];
+        [panel setOpaque:NO];
+        [panel setBackgroundColor:[NSColor clearColor]];
+        
+        CGFloat padding = 10.0f;
+        CGFloat buttonHeight = 20.0f;
+        CGFloat panelWidth = panel.frame.size.width;
+        CGFloat bottom = padding;
+        
+        CGRect frame = CGRectMake(padding,
+                                  bottom,
+                                  panelWidth - 2 * padding,
+                                  buttonHeight);
+        
+        _stopButton = [[NSButton alloc] initWithFrame:frame];
+        _stopButton.title = @"Stop";
+        _stopButton.bezelStyle = NSRoundedBezelStyle;
+        
+        _stopButton.hidden = YES;
+        _stopButton.target = self;
+        _stopButton.action = @selector(stopButtonClicked:);
+        
+        _trackingPanelHeight = bottom + padding + buttonHeight;
+        
+        [_backgroundView addSubview:_stopButton];
+        
+        for (id str in _workTypes) {
+            CGRect frame = CGRectMake(padding,
+                                      bottom,
+                                      panelWidth - 2 * padding,
+                                      buttonHeight);
+            
+            bottom += (padding + buttonHeight);
+            
+            NSButton *button = [[NSButton alloc] initWithFrame:frame];
+            
+            button.target = self;
+            button.action = @selector(workButtonClicked:);
+            
+            button.bezelStyle = NSRoundedBezelStyle;
+            button.title = str;
+            
+            [_workButtons addObject:button];
+            
+            [_backgroundView addSubview:button];
+        }
+        
+        _nonTrackingPanelHeight = bottom;
+        _panelHeight = _nonTrackingPanelHeight;
+        
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateStatusText:) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes]; 
     }
     return self;
 }
@@ -37,6 +128,102 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidChangeNotification object:self.searchField];
 }
+
+#pragma mark Counting logic
+
+- (IBAction) workButtonClicked:(id)sender  {
+    NSLog(@"%@", [sender title]);
+    
+    self.startTime = [NSDate date];
+    self.currentWorkType = [sender title];
+    
+    for (NSButton *button in self.workButtons) {
+        button.hidden = YES;
+    }
+    
+    self.stopButton.hidden = NO;
+    
+    self.isCounting = YES;
+    self.panelHeight = self.trackingPanelHeight;
+    
+    [self.delegate setStatusItemText:[NSString stringWithFormat:@"%@ 0:00", self.currentWorkType]];
+    [self.delegate togglePanel:sender];
+}
+
+- (IBAction)stopButtonClicked:(id)sender {
+    NSDate *endTime = [NSDate date];
+    NSTimeInterval interval = [endTime timeIntervalSinceDate:self.startTime];
+    
+    for (NSButton *button in self.workButtons) {
+        button.hidden = NO;
+    }
+    
+    self.stopButton.hidden = YES;
+    
+    self.isCounting = NO;
+    self.panelHeight = self.nonTrackingPanelHeight;
+    
+    CalCalendarStore *store = [CalCalendarStore defaultCalendarStore];
+    CalCalendar *timesheet = nil;
+    CalEvent *event = [CalEvent event];
+    
+    for (CalCalendar *cal in [store calendars]) {
+        if ([[cal title] isEqualToString:@"Timesheet"]) {
+            timesheet = cal;
+        }
+    }
+    
+    if (timesheet) {
+        event.startDate = self.startTime;
+        event.endDate = endTime;
+        event.calendar = timesheet;
+        event.title = [NSString stringWithFormat:@"Timesheet: %@", self.currentWorkType];
+    
+        NSError *error;
+    
+        [store saveEvent:event span:CalSpanThisEvent error:&error];
+    
+        if (error) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            
+            [alert addButtonWithTitle:@"OK"];
+            [alert setMessageText:@"Error creating event. "];
+            [alert setInformativeText:[error description]];
+            [alert setAlertStyle:NSWarningAlertStyle];
+            
+            [alert runModal];
+        }
+    } else {
+        NSAlert *alert = [[NSAlert alloc] init];
+        
+        [alert addButtonWithTitle:@"OK"];
+        [alert setMessageText:@"Cannot find calendar. "];
+        [alert setInformativeText:@"There isn't a calendar with name \"Timesheet\". "];
+        [alert setAlertStyle:NSWarningAlertStyle];
+        
+        [alert runModal];
+    }
+    
+    self.startTime = NULL;
+    self.currentWorkType = NULL;
+    
+    [self.delegate setStatusItemText:@"Idle"];
+    [self.delegate togglePanel:sender];
+}
+
+- (IBAction)updateStatusText:(id)sender {
+    if (self.isCounting) {
+        NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:self.startTime];
+        int seconds = (int)(interval + 0.5);
+        int minutes = seconds / 60;
+        
+        int hours = minutes / 60;
+        minutes -= 60 * hours;
+    
+        [self.delegate setStatusItemText:[NSString stringWithFormat:@"%@ %d:%02d", self.currentWorkType, hours, minutes]];
+    }
+}
+
 
 #pragma mark -
 
@@ -185,6 +372,7 @@
 
 - (void)openPanel
 {
+    NSLog(@"openPanel called");
     NSWindow *panel = [self window];
     
     NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
@@ -192,7 +380,7 @@
 
     NSRect panelRect = [panel frame];
     panelRect.size.width = PANEL_WIDTH;
-    panelRect.size.height = POPUP_HEIGHT;
+    panelRect.size.height = self.panelHeight + 2 * CORNER_RADIUS;
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     
