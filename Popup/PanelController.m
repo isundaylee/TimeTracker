@@ -1,7 +1,9 @@
 #import "PanelController.h"
+#import "ApplicationDelegate.h"
 #import "BackgroundView.h"
 #import "StatusItemView.h"
 #import "MenubarController.h"
+#import "ReportWindowController.h"
 #import "CalendarStore/CalendarStore.h"
 
 #define OPEN_DURATION .15
@@ -16,6 +18,8 @@
 #pragma mark -
 
 @interface PanelController () {
+    NSButton *_reportButton;
+    ReportWindowController *_reportWindowController;
 }
 
 @property (nonatomic, strong) NSArray *workTypes;
@@ -115,6 +119,17 @@
             [_backgroundView addSubview:button];
         }
         
+        CGFloat reportButtonTopPadding = 20.0f;
+        
+        _reportButton = [[NSButton alloc] initWithFrame:CGRectMake(padding, bottom + reportButtonTopPadding, panelWidth - 2 * padding, buttonHeight)];
+        _reportButton.bezelStyle = NSRoundedBezelStyle;
+        _reportButton.title = @"View Hours";
+        _reportButton.target = self;
+        _reportButton.action = @selector(viewHoursClicked:);
+        [_backgroundView addSubview:_reportButton];
+        
+        bottom += (reportButtonTopPadding + padding + buttonHeight);
+        
         _nonTrackingPanelHeight = bottom;
         _panelHeight = _nonTrackingPanelHeight;
         
@@ -127,6 +142,16 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidChangeNotification object:self.searchField];
+}
+
+#pragma mark View hours logic
+
+- (IBAction) viewHoursClicked:(id)sender {
+    if (!_reportWindowController) {
+        _reportWindowController = [[ReportWindowController alloc] initWithWindowNibName:@"ReportWindowController"];
+    }
+    
+    [_reportWindowController showWindow:self];
 }
 
 #pragma mark Counting logic
@@ -163,15 +188,10 @@
     self.isCounting = NO;
     self.panelHeight = self.nonTrackingPanelHeight;
     
+    ApplicationDelegate *appDelegate = (ApplicationDelegate *)[NSApplication sharedApplication].delegate;
     CalCalendarStore *store = [CalCalendarStore defaultCalendarStore];
-    CalCalendar *timesheet = nil;
+    CalCalendar *timesheet = [appDelegate timesheetCalendar];
     CalEvent *event = [CalEvent event];
-    
-    for (CalCalendar *cal in [store calendars]) {
-        if ([[cal title] isEqualToString:@"Timesheet"]) {
-            timesheet = cal;
-        }
-    }
     
     if (timesheet) {
         event.startDate = self.startTime;

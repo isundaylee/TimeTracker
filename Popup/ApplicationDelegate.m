@@ -73,4 +73,17 @@ void *kContextActivePanel = &kContextActivePanel;
     return self.menubarController.statusItemView;
 }
 
+- (CalCalendar *)timesheetCalendar {
+    CalCalendarStore *store = [CalCalendarStore defaultCalendarStore];
+    CalCalendar *timesheet = nil;
+    
+    for (CalCalendar *cal in [store calendars]) {
+        if ([[cal title] isEqualToString:@"Timesheet"]) {
+            timesheet = cal;
+        }
+    }
+    
+    return timesheet; 
+}
+
 @end

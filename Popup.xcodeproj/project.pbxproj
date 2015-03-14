@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		15696AEB1AA94F3200AE281B /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15696AEA1AA94F3200AE281B /* CalendarStore.framework */; };
 		15696AEF1AA9561B00AE281B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15696AEE1AA9561B00AE281B /* Assets.xcassets */; };
+		1594DF771AB3652000FB9A1F /* ReportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1594DF751AB3652000FB9A1F /* ReportWindowController.m */; };
+		1594DF781AB3652000FB9A1F /* ReportWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1594DF761AB3652000FB9A1F /* ReportWindowController.xib */; };
+		1594DF7A1AB4A92B00FB9A1F /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1594DF791AB4A92B00FB9A1F /* EventKit.framework */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 		DD4F7C1513C30F9F00825C6E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1413C30F9F00825C6E /* main.m */; };
 		DD4F7C1C13C30F9F00825C6E /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1B13C30F9F00825C6E /* ApplicationDelegate.m */; };
@@ -28,6 +31,10 @@
 /* Begin PBXFileReference section */
 		15696AEA1AA94F3200AE281B /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
 		15696AEE1AA9561B00AE281B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1594DF741AB3652000FB9A1F /* ReportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportWindowController.h; sourceTree = "<group>"; };
+		1594DF751AB3652000FB9A1F /* ReportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportWindowController.m; sourceTree = "<group>"; };
+		1594DF761AB3652000FB9A1F /* ReportWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportWindowController.xib; path = Popup/ReportWindowController.xib; sourceTree = "<group>"; };
+		1594DF791AB4A92B00FB9A1F /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		DD4F7C0413C30F9F00825C6E /* Popup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -61,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1594DF7A1AB4A92B00FB9A1F /* EventKit.framework in Frameworks */,
 				15696AEB1AA94F3200AE281B /* CalendarStore.framework in Frameworks */,
 				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
 			);
@@ -92,6 +100,7 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1594DF791AB4A92B00FB9A1F /* EventKit.framework */,
 				15696AEA1AA94F3200AE281B /* CalendarStore.framework */,
 				DD4F7C0B13C30F9F00825C6E /* AppKit.framework */,
 				DD4F7C0C13C30F9F00825C6E /* CoreData.framework */,
@@ -130,6 +139,8 @@
 				DD4F7C3713C317A500825C6E /* MenubarController.m */,
 				DD4F7C3D13C318D600825C6E /* PanelController.h */,
 				DD4F7C3E13C318D600825C6E /* PanelController.m */,
+				1594DF741AB3652000FB9A1F /* ReportWindowController.h */,
+				1594DF751AB3652000FB9A1F /* ReportWindowController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -148,6 +159,7 @@
 			children = (
 				DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */,
 				DD4F7C4013C31B4A00825C6E /* Panel.xib */,
+				1594DF761AB3652000FB9A1F /* ReportWindowController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -226,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1594DF781AB3652000FB9A1F /* ReportWindowController.xib in Resources */,
 				DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */,
 				DD4F7C4113C31B4A00825C6E /* Panel.xib in Resources */,
 				DD4F7C4B13C322FA00825C6E /* Status.png in Resources */,
@@ -246,6 +259,7 @@
 				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
 				DD4F7C1C13C30F9F00825C6E /* ApplicationDelegate.m in Sources */,
 				DD4F7C3813C317A500825C6E /* MenubarController.m in Sources */,
+				1594DF771AB3652000FB9A1F /* ReportWindowController.m in Sources */,
 				DD4F7C3C13C3180800825C6E /* StatusItemView.m in Sources */,
 				DD4F7C3F13C318D600825C6E /* PanelController.m in Sources */,
 				DD4F7C4413C31BD200825C6E /* Panel.m in Sources */,
@@ -342,6 +356,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Popup/Popup-Prefix.pch";
 				INFOPLIST_FILE = "Popup/Popup-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -356,6 +371,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Popup/Popup-Prefix.pch";
 				INFOPLIST_FILE = "Popup/Popup-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

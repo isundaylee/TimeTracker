@@ -1,5 +1,6 @@
 #import "MenubarController.h"
 #import "PanelController.h"
+#import "CalendarStore/CalendarStore.h"
 
 @interface ApplicationDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 
@@ -7,5 +8,7 @@
 @property (nonatomic, strong, readonly) PanelController *panelController;
 
 - (IBAction)togglePanel:(id)sender;
+
+- (CalCalendar *)timesheetCalendar; 
 
 @end
