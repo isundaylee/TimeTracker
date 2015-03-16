@@ -11,7 +11,9 @@
 @interface ReportWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (weak) IBOutlet NSTableView *tableView;
+@property (weak) IBOutlet NSSegmentedControl *weekSelector;
 
-- (void) refresh; 
+- (void) refresh;
+- (IBAction)weekSelectorClicked:(id)sender;
 
 @end

@@ -11,8 +11,13 @@
 #import "CalendarStore/CalendarStore.h"
 #import "EventKit/EventKit.h"
 
+const NSInteger SEGMENT_PREV = 0;
+const NSInteger SEGMENT_DISPLAY = 1;
+const NSInteger SEGMENT_NEXT = 2; 
+
 @interface ReportWindowController () {
     NSArray *_rows;
+    NSInteger _offset;
 }
 
 @end
@@ -25,14 +30,41 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    _offset = 0;
+    
     [self refresh];
 }
 
 - (void)refresh {
-    NSArray *weekdays = [self collectCurrentWeekDays];
-    _rows = [self tableValuesFromDays:weekdays hours:[self collectHoursFromCurrentWeek]];
+    NSArray *weekdays = [self collectWeekDaysWithOffset:_offset];
+    
+    NSDate *firstDay = [weekdays objectAtIndex:0];
+    NSDate *lastDay = [weekdays objectAtIndex:[weekdays count] - 1];
+    
+    NSString *firstDayString = [NSDateFormatter localizedStringFromDate:firstDay dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+    NSString *lastDayString = [NSDateFormatter localizedStringFromDate:lastDay dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+    
+    [self.weekSelector setLabel:[NSString stringWithFormat:@"%@ - %@", firstDayString, lastDayString] forSegment:1];
+    
+    _rows = [self tableValuesFromDays:weekdays hours:[self collectHoursFromWeekWithOffset:_offset]];
     
     [self.tableView reloadData];
+}
+
+#pragma mark Week selector logic
+
+- (IBAction)weekSelectorClicked:(id)sender {
+    NSSegmentedControl *control = (NSSegmentedControl *) sender;
+    NSInteger button = [control selectedSegment];
+    [control selectSegmentWithTag:SEGMENT_DISPLAY];
+    
+    if (button == SEGMENT_PREV) {
+        _offset -= 1;
+        [self refresh];
+    } else if (button == SEGMENT_NEXT) {
+        _offset += 1;
+        [self refresh]; 
+    }
 }
 
 #pragma mark Counting logic
@@ -97,18 +129,23 @@
     }
 }
 
-- (NSArray *) collectCurrentWeekDays {
+- (NSArray *) collectWeekDaysWithOffset:(NSInteger) offset {
     NSMutableArray *days = [NSMutableArray array];
     
     for (int i=1; i<=7; i++) {
-        [days addObject:[self getCurrentWeekday:i]];
+        NSDate *currentWeekday = [self getCurrentWeekday:i];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *offsetComp = [[NSDateComponents alloc] init];
+        offsetComp.day = offset * 7;
+        
+        [days addObject:[calendar dateByAddingComponents:offsetComp toDate:currentWeekday options:0]];
     }
     
     return days;
 }
 
-- (NSArray *) collectHoursFromCurrentWeek {
-    return [self collectHoursFromDays:[self collectCurrentWeekDays]];
+- (NSArray *) collectHoursFromWeekWithOffset:(NSInteger) offset {
+    return [self collectHoursFromDays:[self collectWeekDaysWithOffset:offset]];
 }
 
 - (NSArray *) tableValuesFromDays:(NSArray *)days hours:(NSArray *)hours {
@@ -133,7 +170,7 @@
             [rows addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                              dateString,
                              @"date",
-                             [NSString stringWithFormat:@"%d:%02d", hours, minutes],
+                             [NSString stringWithFormat:@"%ld:%02ld", hours, minutes],
                              @"hours",
                              key,
                              @"role", nil]];
@@ -144,7 +181,7 @@
         [rows addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                          dateString,
                          @"date",
-                         [NSString stringWithFormat:@"%d:%02d", total / 60, total % 60],
+                         [NSString stringWithFormat:@"%ld:%02ld", total / 60, total % 60],
                          @"hours",
                          @"    Total",
                          @"role", nil]];
