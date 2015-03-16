@@ -152,6 +152,8 @@
     }
     
     [_reportWindowController showWindow:self];
+    [_reportWindowController refresh];
+    [_reportWindowController.window orderFront:nil];
 }
 
 #pragma mark Counting logic
