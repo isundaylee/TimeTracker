@@ -153,7 +153,10 @@
     
     [_reportWindowController showWindow:self];
     [_reportWindowController refresh];
-    [_reportWindowController.window orderFront:nil];
+    [_reportWindowController.window orderFrontRegardless];
+    
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    [_reportWindowController.window makeKeyAndOrderFront:self];
 }
 
 #pragma mark Counting logic
