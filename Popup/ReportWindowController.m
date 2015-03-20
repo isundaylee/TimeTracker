@@ -150,6 +150,7 @@ const NSInteger SEGMENT_NEXT = 2;
 
 - (NSArray *) tableValuesFromDays:(NSArray *)days hours:(NSArray *)hours {
     NSMutableArray *rows = [NSMutableArray array];
+    NSInteger grandTotal = 0;
     
     NSAssert([days count] == [hours count], @"Days and hours must have the same length. ");
     
@@ -166,6 +167,7 @@ const NSInteger SEGMENT_NEXT = 2;
             
             minutes -= (hours * 60);
             total += (60 * hours + minutes);
+            grandTotal += (60 * hours + minutes);
 
             [rows addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                              dateString,
@@ -186,6 +188,14 @@ const NSInteger SEGMENT_NEXT = 2;
                          @"    Total",
                          @"role", nil]];
     }
+    
+    [rows addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                     @"",
+                     @"date",
+                     [NSString stringWithFormat:@"%ld:%02ld", grandTotal / 60, grandTotal % 60],
+                     @"hours",
+                     @"Grand Total",
+                     @"role", nil]];
     
     return rows;
 }
