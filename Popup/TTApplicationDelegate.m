@@ -1,6 +1,6 @@
-#import "ApplicationDelegate.h"
+#import "TTApplicationDelegate.h"
 
-@implementation ApplicationDelegate
+@implementation TTApplicationDelegate
 
 @synthesize panelController = _panelController;
 @synthesize menubarController = _menubarController;
@@ -31,7 +31,7 @@ void *kContextActivePanel = &kContextActivePanel;
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     // Install icon into the menu bar
-    self.menubarController = [[MenubarController alloc] init];
+    self.menubarController = [[TTMenubarController alloc] init];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
@@ -57,10 +57,10 @@ void *kContextActivePanel = &kContextActivePanel;
 
 #pragma mark - Public accessors
 
-- (PanelController *)panelController
+- (TTPanelController *)panelController
 {
     if (_panelController == nil) {
-        _panelController = [[PanelController alloc] initWithDelegate:self];
+        _panelController = [[TTPanelController alloc] initWithDelegate:self];
         [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
     }
     return _panelController;
@@ -68,7 +68,7 @@ void *kContextActivePanel = &kContextActivePanel;
 
 #pragma mark - PanelControllerDelegate
 
-- (StatusItemView *)statusItemViewForPanelController:(PanelController *)controller
+- (TTStatusItemView *)statusItemViewForPanelController:(TTPanelController *)controller
 {
     return self.menubarController.statusItemView;
 }

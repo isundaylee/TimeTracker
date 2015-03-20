@@ -1,9 +1,9 @@
-#import "PanelController.h"
-#import "ApplicationDelegate.h"
-#import "BackgroundView.h"
-#import "StatusItemView.h"
-#import "MenubarController.h"
-#import "ReportWindowController.h"
+#import "TTPanelController.h"
+#import "TTApplicationDelegate.h"
+#import "TTBackgroundView.h"
+#import "TTStatusItemView.h"
+#import "TTMenubarController.h"
+#import "TTReportWindowController.h"
 #import "CalendarStore/CalendarStore.h"
 
 #define OPEN_DURATION .15
@@ -17,9 +17,9 @@
 
 #pragma mark -
 
-@interface PanelController () {
+@interface TTPanelController () {
     NSButton *_reportButton;
-    ReportWindowController *_reportWindowController;
+    TTReportWindowController *_reportWindowController;
 }
 
 @property (nonatomic, strong) NSArray *workTypes;
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation PanelController
+@implementation TTPanelController
 
 @synthesize backgroundView = _backgroundView;
 @synthesize delegate = _delegate;
@@ -148,7 +148,7 @@
 
 - (IBAction) viewHoursClicked:(id)sender {
     if (!_reportWindowController) {
-        _reportWindowController = [[ReportWindowController alloc] initWithWindowNibName:@"ReportWindowController"];
+        _reportWindowController = [[TTReportWindowController alloc] initWithWindowNibName:@"ReportWindowController"];
     }
     
     [_reportWindowController showWindow:self];
@@ -193,7 +193,7 @@
     self.isCounting = NO;
     self.panelHeight = self.nonTrackingPanelHeight;
     
-    ApplicationDelegate *appDelegate = (ApplicationDelegate *)[NSApplication sharedApplication].delegate;
+    TTApplicationDelegate *appDelegate = (TTApplicationDelegate *)[NSApplication sharedApplication].delegate;
     CalCalendarStore *store = [CalCalendarStore defaultCalendarStore];
     CalCalendar *timesheet = [appDelegate timesheetCalendar];
     CalEvent *event = [CalEvent event];
@@ -375,7 +375,7 @@
     NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
     NSRect statusRect = NSZeroRect;
     
-    StatusItemView *statusItemView = nil;
+    TTStatusItemView *statusItemView = nil;
     if ([self.delegate respondsToSelector:@selector(statusItemViewForPanelController:)])
     {
         statusItemView = [self.delegate statusItemViewForPanelController:self];

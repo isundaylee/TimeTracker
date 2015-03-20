@@ -1,6 +1,6 @@
-#import "Panel.h"
+#import "TTPanel.h"
 
-@implementation Panel
+@implementation TTPanel
 
 - (BOOL)canBecomeKeyWindow;
 {

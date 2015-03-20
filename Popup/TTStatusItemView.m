@@ -1,6 +1,6 @@
-#import "StatusItemView.h"
+#import "TTStatusItemView.h"
 
-@implementation StatusItemView
+@implementation TTStatusItemView
 
 @synthesize statusItem = _statusItem;
 @synthesize image = _image;

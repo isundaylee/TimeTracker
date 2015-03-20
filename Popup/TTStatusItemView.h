@@ -1,4 +1,4 @@
-@interface StatusItemView : NSView {
+@interface TTStatusItemView : NSView {
 @private
     NSImage *_image;
     NSImage *_alternateImage;

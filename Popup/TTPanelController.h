@@ -1,7 +1,7 @@
-#import "BackgroundView.h"
-#import "StatusItemView.h"
+#import "TTBackgroundView.h"
+#import "TTStatusItemView.h"
 
-@class PanelController;
+@class TTPanelController;
 
 @protocol PanelControllerDelegate <NSObject>
 
@@ -10,22 +10,22 @@
 
 @optional
 
-- (StatusItemView *)statusItemViewForPanelController:(PanelController *)controller;
+- (TTStatusItemView *)statusItemViewForPanelController:(TTPanelController *)controller;
 
 @end
 
 #pragma mark -
 
-@interface PanelController : NSWindowController <NSWindowDelegate>
+@interface TTPanelController : NSWindowController <NSWindowDelegate>
 {
     BOOL _hasActivePanel;
-    __unsafe_unretained BackgroundView *_backgroundView;
+    __unsafe_unretained TTBackgroundView *_backgroundView;
     __unsafe_unretained id<PanelControllerDelegate> _delegate;
     __unsafe_unretained NSSearchField *_searchField;
     __unsafe_unretained NSTextField *_textField;
 }
 
-@property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
+@property (nonatomic, unsafe_unretained) IBOutlet TTBackgroundView *backgroundView;
 @property (nonatomic, unsafe_unretained) IBOutlet NSSearchField *searchField;
 @property (nonatomic, unsafe_unretained) IBOutlet NSTextField *textField;
 

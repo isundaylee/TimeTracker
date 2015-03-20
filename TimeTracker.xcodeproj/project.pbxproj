@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		15696AEB1AA94F3200AE281B /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15696AEA1AA94F3200AE281B /* CalendarStore.framework */; };
 		15696AEF1AA9561B00AE281B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15696AEE1AA9561B00AE281B /* Assets.xcassets */; };
-		1594DF771AB3652000FB9A1F /* ReportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1594DF751AB3652000FB9A1F /* ReportWindowController.m */; };
-		1594DF781AB3652000FB9A1F /* ReportWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1594DF761AB3652000FB9A1F /* ReportWindowController.xib */; };
+		1594DF771AB3652000FB9A1F /* TTReportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1594DF751AB3652000FB9A1F /* TTReportWindowController.m */; };
+		1594DF781AB3652000FB9A1F /* TTReportWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1594DF761AB3652000FB9A1F /* TTReportWindowController.xib */; };
 		1594DF7A1AB4A92B00FB9A1F /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1594DF791AB4A92B00FB9A1F /* EventKit.framework */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 		DD4F7C1513C30F9F00825C6E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1413C30F9F00825C6E /* main.m */; };
-		DD4F7C1C13C30F9F00825C6E /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1B13C30F9F00825C6E /* ApplicationDelegate.m */; };
+		DD4F7C1C13C30F9F00825C6E /* TTApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1B13C30F9F00825C6E /* TTApplicationDelegate.m */; };
 		DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */; };
-		DD4F7C3813C317A500825C6E /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C3713C317A500825C6E /* MenubarController.m */; };
-		DD4F7C3C13C3180800825C6E /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C3B13C3180800825C6E /* StatusItemView.m */; };
-		DD4F7C3F13C318D600825C6E /* PanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C3E13C318D600825C6E /* PanelController.m */; };
-		DD4F7C4113C31B4A00825C6E /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4F7C4013C31B4A00825C6E /* Panel.xib */; };
-		DD4F7C4413C31BD200825C6E /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C4313C31BD200825C6E /* Panel.m */; };
-		DD4F7C4713C3208500825C6E /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C4613C3208500825C6E /* BackgroundView.m */; };
+		DD4F7C3813C317A500825C6E /* TTMenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C3713C317A500825C6E /* TTMenubarController.m */; };
+		DD4F7C3C13C3180800825C6E /* TTStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C3B13C3180800825C6E /* TTStatusItemView.m */; };
+		DD4F7C3F13C318D600825C6E /* TTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C3E13C318D600825C6E /* TTPanelController.m */; };
+		DD4F7C4113C31B4A00825C6E /* TTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4F7C4013C31B4A00825C6E /* TTPanel.xib */; };
+		DD4F7C4413C31BD200825C6E /* TTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C4313C31BD200825C6E /* TTPanel.m */; };
+		DD4F7C4713C3208500825C6E /* TTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C4613C3208500825C6E /* TTBackgroundView.m */; };
 		DD4F7C4B13C322FA00825C6E /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4F7C4913C322FA00825C6E /* Status.png */; };
 		DD4F7C4C13C322FA00825C6E /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4F7C4A13C322FA00825C6E /* StatusHighlighted.png */; };
 		DDF4EFAC16C80A510044D141 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDF4EFAB16C80A510044D141 /* Status@2x.png */; };
@@ -31,32 +31,32 @@
 /* Begin PBXFileReference section */
 		15696AEA1AA94F3200AE281B /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
 		15696AEE1AA9561B00AE281B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1594DF741AB3652000FB9A1F /* ReportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportWindowController.h; sourceTree = "<group>"; };
-		1594DF751AB3652000FB9A1F /* ReportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportWindowController.m; sourceTree = "<group>"; };
-		1594DF761AB3652000FB9A1F /* ReportWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportWindowController.xib; path = Popup/ReportWindowController.xib; sourceTree = "<group>"; };
+		1594DF741AB3652000FB9A1F /* TTReportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTReportWindowController.h; sourceTree = "<group>"; };
+		1594DF751AB3652000FB9A1F /* TTReportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTReportWindowController.m; sourceTree = "<group>"; };
+		1594DF761AB3652000FB9A1F /* TTReportWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTReportWindowController.xib; path = Popup/TTReportWindowController.xib; sourceTree = "<group>"; };
 		1594DF791AB4A92B00FB9A1F /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		DD4F7C0413C30F9F00825C6E /* Popup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popup.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4F7C0413C30F9F00825C6E /* TimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DD4F7C0C13C30F9F00825C6E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DD4F7C0D13C30F9F00825C6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		DD4F7C1013C30F9F00825C6E /* Popup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Popup-Info.plist"; path = "Popup/Popup-Info.plist"; sourceTree = "<group>"; };
+		DD4F7C1013C30F9F00825C6E /* TimeTracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TimeTracker-Info.plist"; path = "Popup/TimeTracker-Info.plist"; sourceTree = "<group>"; };
 		DD4F7C1413C30F9F00825C6E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DD4F7C1613C30F9F00825C6E /* Popup-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Popup-Prefix.pch"; sourceTree = "<group>"; };
-		DD4F7C1A13C30F9F00825C6E /* ApplicationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
-		DD4F7C1B13C30F9F00825C6E /* ApplicationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
+		DD4F7C1613C30F9F00825C6E /* TimeTracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TimeTracker-Prefix.pch"; sourceTree = "<group>"; };
+		DD4F7C1A13C30F9F00825C6E /* TTApplicationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTApplicationDelegate.h; sourceTree = "<group>"; };
+		DD4F7C1B13C30F9F00825C6E /* TTApplicationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTApplicationDelegate.m; sourceTree = "<group>"; };
 		DD4F7C1E13C30F9F00825C6E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		DD4F7C3613C317A500825C6E /* MenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenubarController.h; sourceTree = "<group>"; };
-		DD4F7C3713C317A500825C6E /* MenubarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenubarController.m; sourceTree = "<group>"; };
-		DD4F7C3A13C3180800825C6E /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
-		DD4F7C3B13C3180800825C6E /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
-		DD4F7C3D13C318D600825C6E /* PanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelController.h; sourceTree = "<group>"; };
-		DD4F7C3E13C318D600825C6E /* PanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelController.m; sourceTree = "<group>"; };
-		DD4F7C4013C31B4A00825C6E /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Panel.xib; path = Popup/Panel.xib; sourceTree = "<group>"; };
-		DD4F7C4213C31BD200825C6E /* Panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panel.h; sourceTree = "<group>"; };
-		DD4F7C4313C31BD200825C6E /* Panel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panel.m; sourceTree = "<group>"; };
-		DD4F7C4513C3208500825C6E /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
-		DD4F7C4613C3208500825C6E /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
+		DD4F7C3613C317A500825C6E /* TTMenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMenubarController.h; sourceTree = "<group>"; };
+		DD4F7C3713C317A500825C6E /* TTMenubarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMenubarController.m; sourceTree = "<group>"; };
+		DD4F7C3A13C3180800825C6E /* TTStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStatusItemView.h; sourceTree = "<group>"; };
+		DD4F7C3B13C3180800825C6E /* TTStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStatusItemView.m; sourceTree = "<group>"; };
+		DD4F7C3D13C318D600825C6E /* TTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanelController.h; sourceTree = "<group>"; };
+		DD4F7C3E13C318D600825C6E /* TTPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanelController.m; sourceTree = "<group>"; };
+		DD4F7C4013C31B4A00825C6E /* TTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPanel.xib; path = Popup/TTPanel.xib; sourceTree = "<group>"; };
+		DD4F7C4213C31BD200825C6E /* TTPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPanel.h; sourceTree = "<group>"; };
+		DD4F7C4313C31BD200825C6E /* TTPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPanel.m; sourceTree = "<group>"; };
+		DD4F7C4513C3208500825C6E /* TTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBackgroundView.h; sourceTree = "<group>"; };
+		DD4F7C4613C3208500825C6E /* TTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBackgroundView.m; sourceTree = "<group>"; };
 		DD4F7C4913C322FA00825C6E /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Status.png; path = Popup/Status.png; sourceTree = "<group>"; };
 		DD4F7C4A13C322FA00825C6E /* StatusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusHighlighted.png; path = Popup/StatusHighlighted.png; sourceTree = "<group>"; };
 		DDF4EFAB16C80A510044D141 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status@2x.png"; path = "Popup/Status@2x.png"; sourceTree = "<group>"; };
@@ -85,14 +85,14 @@
 				DD4F7C2813C3123E00825C6E /* User Interface */,
 				DD4F7C0713C30F9F00825C6E /* Frameworks */,
 				DD4F7C0513C30F9F00825C6E /* Products */,
-				DD4F7C1013C30F9F00825C6E /* Popup-Info.plist */,
+				DD4F7C1013C30F9F00825C6E /* TimeTracker-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		DD4F7C0513C30F9F00825C6E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD4F7C0413C30F9F00825C6E /* Popup.app */,
+				DD4F7C0413C30F9F00825C6E /* TimeTracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,7 +124,7 @@
 		DD4F7C0F13C30F9F00825C6E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DD4F7C1613C30F9F00825C6E /* Popup-Prefix.pch */,
+				DD4F7C1613C30F9F00825C6E /* TimeTracker-Prefix.pch */,
 				DD4F7C1413C30F9F00825C6E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -133,14 +133,14 @@
 		DD4F7C2613C311DF00825C6E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DD4F7C1A13C30F9F00825C6E /* ApplicationDelegate.h */,
-				DD4F7C1B13C30F9F00825C6E /* ApplicationDelegate.m */,
-				DD4F7C3613C317A500825C6E /* MenubarController.h */,
-				DD4F7C3713C317A500825C6E /* MenubarController.m */,
-				DD4F7C3D13C318D600825C6E /* PanelController.h */,
-				DD4F7C3E13C318D600825C6E /* PanelController.m */,
-				1594DF741AB3652000FB9A1F /* ReportWindowController.h */,
-				1594DF751AB3652000FB9A1F /* ReportWindowController.m */,
+				DD4F7C1A13C30F9F00825C6E /* TTApplicationDelegate.h */,
+				DD4F7C1B13C30F9F00825C6E /* TTApplicationDelegate.m */,
+				DD4F7C3613C317A500825C6E /* TTMenubarController.h */,
+				DD4F7C3713C317A500825C6E /* TTMenubarController.m */,
+				DD4F7C3D13C318D600825C6E /* TTPanelController.h */,
+				DD4F7C3E13C318D600825C6E /* TTPanelController.m */,
+				1594DF741AB3652000FB9A1F /* TTReportWindowController.h */,
+				1594DF751AB3652000FB9A1F /* TTReportWindowController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -158,8 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */,
-				DD4F7C4013C31B4A00825C6E /* Panel.xib */,
-				1594DF761AB3652000FB9A1F /* ReportWindowController.xib */,
+				DD4F7C4013C31B4A00825C6E /* TTPanel.xib */,
+				1594DF761AB3652000FB9A1F /* TTReportWindowController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -167,12 +167,12 @@
 		DD4F7C3913C317EC00825C6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DD4F7C4213C31BD200825C6E /* Panel.h */,
-				DD4F7C4313C31BD200825C6E /* Panel.m */,
-				DD4F7C3A13C3180800825C6E /* StatusItemView.h */,
-				DD4F7C3B13C3180800825C6E /* StatusItemView.m */,
-				DD4F7C4513C3208500825C6E /* BackgroundView.h */,
-				DD4F7C4613C3208500825C6E /* BackgroundView.m */,
+				DD4F7C4213C31BD200825C6E /* TTPanel.h */,
+				DD4F7C4313C31BD200825C6E /* TTPanel.m */,
+				DD4F7C3A13C3180800825C6E /* TTStatusItemView.h */,
+				DD4F7C3B13C3180800825C6E /* TTStatusItemView.m */,
+				DD4F7C4513C3208500825C6E /* TTBackgroundView.h */,
+				DD4F7C4613C3208500825C6E /* TTBackgroundView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -191,9 +191,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DD4F7C0313C30F9F00825C6E /* Popup */ = {
+		DD4F7C0313C30F9F00825C6E /* TimeTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "Popup" */;
+			buildConfigurationList = DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "TimeTracker" */;
 			buildPhases = (
 				DD4F7C0013C30F9F00825C6E /* Sources */,
 				DD4F7C0113C30F9F00825C6E /* Frameworks */,
@@ -203,9 +203,9 @@
 			);
 			dependencies = (
 			);
-			name = Popup;
+			name = TimeTracker;
 			productName = Popup;
-			productReference = DD4F7C0413C30F9F00825C6E /* Popup.app */;
+			productReference = DD4F7C0413C30F9F00825C6E /* TimeTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -216,7 +216,7 @@
 			attributes = {
 				LastUpgradeCheck = 0610;
 			};
-			buildConfigurationList = DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "Popup" */;
+			buildConfigurationList = DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "TimeTracker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -228,7 +228,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DD4F7C0313C30F9F00825C6E /* Popup */,
+				DD4F7C0313C30F9F00825C6E /* TimeTracker */,
 			);
 		};
 /* End PBXProject section */
@@ -238,9 +238,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1594DF781AB3652000FB9A1F /* ReportWindowController.xib in Resources */,
+				1594DF781AB3652000FB9A1F /* TTReportWindowController.xib in Resources */,
 				DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */,
-				DD4F7C4113C31B4A00825C6E /* Panel.xib in Resources */,
+				DD4F7C4113C31B4A00825C6E /* TTPanel.xib in Resources */,
 				DD4F7C4B13C322FA00825C6E /* Status.png in Resources */,
 				DD4F7C4C13C322FA00825C6E /* StatusHighlighted.png in Resources */,
 				15696AEF1AA9561B00AE281B /* Assets.xcassets in Resources */,
@@ -257,13 +257,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
-				DD4F7C1C13C30F9F00825C6E /* ApplicationDelegate.m in Sources */,
-				DD4F7C3813C317A500825C6E /* MenubarController.m in Sources */,
-				1594DF771AB3652000FB9A1F /* ReportWindowController.m in Sources */,
-				DD4F7C3C13C3180800825C6E /* StatusItemView.m in Sources */,
-				DD4F7C3F13C318D600825C6E /* PanelController.m in Sources */,
-				DD4F7C4413C31BD200825C6E /* Panel.m in Sources */,
-				DD4F7C4713C3208500825C6E /* BackgroundView.m in Sources */,
+				DD4F7C1C13C30F9F00825C6E /* TTApplicationDelegate.m in Sources */,
+				DD4F7C3813C317A500825C6E /* TTMenubarController.m in Sources */,
+				1594DF771AB3652000FB9A1F /* TTReportWindowController.m in Sources */,
+				DD4F7C3C13C3180800825C6E /* TTStatusItemView.m in Sources */,
+				DD4F7C3F13C318D600825C6E /* TTPanelController.m in Sources */,
+				DD4F7C4413C31BD200825C6E /* TTPanel.m in Sources */,
+				DD4F7C4713C3208500825C6E /* TTBackgroundView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,10 +354,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Popup/Popup-Prefix.pch";
-				INFOPLIST_FILE = "Popup/Popup-Info.plist";
+				GCC_PREFIX_HEADER = "Popup/TimeTracker-Prefix.pch";
+				INFOPLIST_FILE = "Popup/TimeTracker-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TimeTracker;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -369,10 +369,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Popup/Popup-Prefix.pch";
-				INFOPLIST_FILE = "Popup/Popup-Info.plist";
+				GCC_PREFIX_HEADER = "Popup/TimeTracker-Prefix.pch";
+				INFOPLIST_FILE = "Popup/TimeTracker-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TimeTracker;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -380,7 +380,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "Popup" */ = {
+		DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "TimeTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD4F7C2013C30F9F00825C6E /* Debug */,
@@ -389,7 +389,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "Popup" */ = {
+		DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "TimeTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD4F7C2313C30F9F00825C6E /* Debug */,

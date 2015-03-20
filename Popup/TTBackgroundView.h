@@ -3,7 +3,7 @@
 
 #define CORNER_RADIUS 6.0f
 
-@interface BackgroundView : NSView
+@interface TTBackgroundView : NSView
 {
     NSInteger _arrowX;
 }

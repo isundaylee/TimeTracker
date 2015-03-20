@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1060</int>
+		<int key="IBDocument.SystemTarget">101000</int>
 		<string key="IBDocument.SystemVersion">14B25</string>
 		<string key="IBDocument.InterfaceBuilderVersion">6250</string>
 		<string key="IBDocument.AppKitVersion">1343.16</string>
@@ -24,7 +24,7 @@
 		</object>
 		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<object class="NSCustomObject" id="1001">
-				<string key="NSClassName">PanelController</string>
+				<string key="NSClassName">TTPanelController</string>
 			</object>
 			<object class="NSCustomObject" id="1003">
 				<string key="NSClassName">FirstResponder</string>
@@ -38,17 +38,14 @@
 				<string key="NSWindowRect">{{162, 101}, {280, 180}}</string>
 				<int key="NSWTFlags">1685586944</int>
 				<string key="NSWindowTitle"/>
-				<string key="NSWindowClass">Panel</string>
+				<string key="NSWindowClass">TTPanel</string>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="290197886">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews"/>
 					<string key="NSFrameSize">{280, 180}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1027}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
@@ -133,7 +130,7 @@
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBWindowTemplateEditedContentRect">{{609, 381}, {280, 378}}</string>
 				<boolean value="NO" key="5.NSWindowTemplate.visibleAtLaunch"/>
-				<string key="6.CustomClassName">BackgroundView</string>
+				<string key="6.CustomClassName">TTBackgroundView</string>
 				<reference key="6.IBNSViewMetadataGestureRecognizers" ref="0"/>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
@@ -154,15 +151,15 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">Panel</string>
+					<string key="className">TTPanel</string>
 					<string key="superclassName">NSPanel</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Popup/Panel.h</string>
+						<string key="minorKey">Popup/TTPanel.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">PanelController</string>
+					<string key="className">TTPanelController</string>
 					<string key="superclassName">NSWindowController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="backgroundView">BackgroundView</string>
@@ -185,7 +182,38 @@
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Popup/PanelController.h</string>
+						<string key="minorKey">Popup/TTPanelController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TTPanelController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="stopButtonClicked:">id</string>
+						<string key="updateStatusText:">id</string>
+						<string key="viewHoursClicked:">id</string>
+						<string key="workButtonClicked:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="stopButtonClicked:">
+							<string key="name">stopButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="updateStatusText:">
+							<string key="name">updateStatusText:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="viewHoursClicked:">
+							<string key="name">viewHoursClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="workButtonClicked:">
+							<string key="name">workButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Popup/TTPanelController.m</string>
 					</object>
 				</object>
 			</array>

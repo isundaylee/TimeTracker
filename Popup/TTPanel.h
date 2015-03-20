@@ -1,0 +1,2 @@
+@interface TTPanel : NSPanel
+@end

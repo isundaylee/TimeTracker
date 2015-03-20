@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ReportWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate>
+@interface TTReportWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSSegmentedControl *weekSelector;

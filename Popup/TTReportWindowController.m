@@ -6,8 +6,8 @@
 //
 //
 
-#import "ReportWindowController.h"
-#import "ApplicationDelegate.h"
+#import "TTReportWindowController.h"
+#import "TTApplicationDelegate.h"
 #import "CalendarStore/CalendarStore.h"
 #import "EventKit/EventKit.h"
 
@@ -15,14 +15,14 @@ const NSInteger SEGMENT_PREV = 0;
 const NSInteger SEGMENT_DISPLAY = 1;
 const NSInteger SEGMENT_NEXT = 2; 
 
-@interface ReportWindowController () {
+@interface TTReportWindowController () {
     NSArray *_rows;
     NSInteger _offset;
 }
 
 @end
 
-@implementation ReportWindowController
+@implementation TTReportWindowController
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -87,7 +87,7 @@ const NSInteger SEGMENT_NEXT = 2;
 
 - (NSArray *) collectHoursFromDays:(NSArray *)days {
     NSMutableArray *results = [NSMutableArray array];
-    ApplicationDelegate *appDelegate = (ApplicationDelegate *)[NSApplication sharedApplication].delegate;
+    TTApplicationDelegate *appDelegate = (TTApplicationDelegate *)[NSApplication sharedApplication].delegate;
     CalCalendarStore *store = [CalCalendarStore defaultCalendarStore];
     CalCalendar *timesheet = [appDelegate timesheetCalendar];
     NSCalendar *gregorian = [NSCalendar currentCalendar];
