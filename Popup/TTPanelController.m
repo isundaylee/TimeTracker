@@ -55,7 +55,7 @@
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate
 {
     NSLog(@"initWithDelegate called");
-    self = [super initWithWindowNibName:@"Panel"];
+    self = [super initWithWindowNibName:@"TTPanel"];
     if (self != nil)
     {
         _delegate = delegate;
@@ -148,7 +148,7 @@
 
 - (IBAction) viewHoursClicked:(id)sender {
     if (!_reportWindowController) {
-        _reportWindowController = [[TTReportWindowController alloc] initWithWindowNibName:@"ReportWindowController"];
+        _reportWindowController = [[TTReportWindowController alloc] initWithWindowNibName:@"TTReportWindowController"];
     }
     
     [_reportWindowController showWindow:self];
